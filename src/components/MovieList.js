@@ -9,19 +9,19 @@ import SearchBar from "./SearchBar";
 const MovieList = () => {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies);
-  //   console.log("Check movies", movies);
   const searchResults = useSelector((state) => state.searchResults);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
   const fetchMoreMovies = async () => {
     if (!loading) {
-      setLoading(true);
-      const data = await fetchUpcomingMovies(page + 1);
-      dispatch(setMovies([...movies, ...data]));
-      setPage(page + 1);
-      setLoading(false);
-    }
+        setLoading(true);
+        const nextPage = page + 1;
+        const data = await fetchUpcomingMovies(nextPage);
+        dispatch(setMovies([...movies, ...data]));
+        setPage(nextPage);
+        setLoading(false);
+      }
   };
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const MovieList = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [movies, loading]);
+  }, [loading]);
 
   const sortedMovies = movies.slice().sort((a, b) => {
     const releaseDateA = new Date(a.release_date);
