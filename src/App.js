@@ -1,21 +1,21 @@
-// import logo from './logo.svg';
-// import './App.css';
-import { useEffect } from 'react';
-import { fetchUpcomingMovies } from './utility/api';
+import React from "react";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import MovieList from "./components/MovieList";
+import MovieDetails from "./components/MovieDetails";
 
-function App() {
-
-  useEffect(() => {
-    fetchUpcomingMovies(1).then((data) => {
-      console.log("data", data);
-    })
-  }, []);
-
+const App = () => {
   return (
-    <div>
-      <h2>hello</h2>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" exact element={<MovieList />} />
+          <Route path="/details/:id" element={<MovieDetails />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
-}
+};
 
 export default App;
