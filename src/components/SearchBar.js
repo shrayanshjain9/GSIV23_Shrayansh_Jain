@@ -16,6 +16,7 @@ const SearchBar = () => {
     }
   };
 
+  //implementing debouncing for search results
   useEffect(() => {
     const timer = setTimeout(() => handleSearch(), 200);
     return () => {

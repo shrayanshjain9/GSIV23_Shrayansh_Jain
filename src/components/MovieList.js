@@ -30,7 +30,14 @@ const MovieList = () => {
   useEffect(() => {
     if (!searchResults.length) {
       dispatch(setMovies([])); // Clear the movies state
-      fetchUpcomingMovies(1).then((data) => dispatch(setMovies(data)));
+      fetchUpcomingMovies(1).then((data) => {
+        const sortedData = data.slice().sort((a, b) => {
+          const releaseDateA = new Date(a.release_date);
+          const releaseDateB = new Date(b.release_date);
+          return releaseDateA - releaseDateB;
+        });
+        dispatch(setMovies(sortedData));
+      });
     }
   }, []);
 
@@ -57,11 +64,11 @@ const MovieList = () => {
   }, [loading]);
 
   // Sort movies by release date
-  const sortedMovies = movies.slice().sort((a, b) => {
-    const releaseDateA = new Date(a.release_date);
-    const releaseDateB = new Date(b.release_date);
-    return releaseDateA - releaseDateB;
-  });
+//   const sortedMovies = movies.slice().sort((a, b) => {
+//     const releaseDateA = new Date(a.release_date);
+//     const releaseDateB = new Date(b.release_date);
+//     return releaseDateA - releaseDateB;
+//   });
 
   return (
     <>
@@ -74,7 +81,7 @@ const MovieList = () => {
           ))
         ) : (
           <>
-            {sortedMovies.map((movie) => (
+            {movies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
           </>
