@@ -11,6 +11,7 @@ const MovieList = () => {
   const searchResults = useSelector((state) => state.searchResults);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
 
   // Fetch more movies when scrolling near the bottom
   const fetchMoreMovies = async () => {
@@ -21,6 +22,7 @@ const MovieList = () => {
       dispatch(setMovies([...movies, ...data])); // Update movies state
       setPage(nextPage);
       setLoading(false);
+      setScrolling(false);
     }
   };
 
@@ -34,12 +36,15 @@ const MovieList = () => {
 
   // Handle infinite scrolling
   const handleScroll = () => {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollTop = window.scrollY;
+    if (!scrolling) {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY;
 
-    if (scrollTop + windowHeight >= documentHeight - 300) {
-      fetchMoreMovies();
+      if (scrollTop + windowHeight >= documentHeight - 300) {
+        setScrolling(true);
+        fetchMoreMovies();
+      }
     }
   };
 
