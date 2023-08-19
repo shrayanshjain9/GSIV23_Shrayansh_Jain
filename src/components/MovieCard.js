@@ -20,7 +20,7 @@ const MovieCard = ({ movie }) => {
       {/* Link to the movie details page */}
       <Link to={`/details/${movie.id}`}>
         <img
-          src={`https://image.tmdb.org/t/p/w780/${movie.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
           alt={movie.title}
           className="w-full h-86 object-cover"
         />
