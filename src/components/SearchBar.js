@@ -11,9 +11,17 @@ const SearchBar = () => {
     // setSearchQuery(e.target.value);
     if (searchQuery) {
       const results = await searchMovies(searchQuery, 1);
+      console.log("Search API calling", results);
       dispatch(setSearchResults(results));
     }
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => handleSearch(), 200);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
 
   useEffect(() => {
     if (searchQuery === "") {
@@ -41,7 +49,7 @@ const SearchBar = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             // onChange={(e) => handleSearch(e)}
-            onKeyUp={handleSearch}
+            // onKeyUp={handleSearch}
             className="font-semibold rounded-md bg-gray-200 px-4 py-2 pl-12 m-3 ml-7 border w-full border-gray-300  focus:outline-none focus:border-gray-400 "
           />
         </div>
