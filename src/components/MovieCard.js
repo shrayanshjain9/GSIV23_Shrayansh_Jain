@@ -42,9 +42,9 @@ const MovieCard = ({ movie }) => {
         {movie.overview.length > 15 && (
           <button
             onClick={toggleOverview}
-            className="text-blue-500 hover:underline font-bold"
+            className="text-blue-400 hover:underline text-xs"
           >
-            {expanded ? "Read Less" : "..."}
+            {expanded ? "Read Less" : "Read More"}
           </button>
         )}
       </div>
