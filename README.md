@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Movie List App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Instructions
 
-## Available Scripts
+To run and test the code, follow these steps:
 
-In the project directory, you can run:
+1. Clone the repository: `git clone https://github.com/shrayanshjain9/movie-list-app.git`
+2. Navigate to the project directory: `cd movie-list-app`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm start`
+5. Open your browser and go to `http://localhost:3000`
 
-### `npm start`
+## Challenge Elements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Infinite Scroll and API Integration
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I successfully implemented infinite scrolling to load more movies as the user scrolls near the bottom of the page. I integrated the API to fetch upcoming movies and handle the loading state properly. This demonstrates my proficiency in handling asynchronous operations and user interactions.
 
-### `npm test`
+### Dynamic UI Updates
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app updates the UI dynamically based on search results and sorting. It displays either search results or sorted movies based on user actions. This showcases my ability to manage and manipulate state effectively.
 
-### `npm run build`
+## Possible Improvements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If I had 4 more hours, I would focus on the following improvements:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Optimizing API Calls:** Implement caching or debouncing to avoid excessive API requests while scrolling.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Enhanced Error Handling:** Improve error handling for API calls, providing informative messages for users.
 
-### `npm run eject`
+3. **Unit Testing:** Write comprehensive unit tests to ensure the functionality and reliability of critical components.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Responsive Design:** Enhance the UI to provide a seamless experience on different screen sizes and devices.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. **Code Refactoring:** Refactor the codebase to improve code organization, modularity, and readability.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Feedback
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The challenge was well-structured and allowed me to demonstrate my skills in React, Redux, and asynchronous programming. It provided a good opportunity to showcase my proficiency in managing state, integrating APIs, and handling user interactions. Adding more specific instructions for the challenge requirements could make it even more effective.
