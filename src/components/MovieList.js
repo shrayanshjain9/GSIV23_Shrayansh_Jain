@@ -15,20 +15,45 @@ const MovieList = () => {
 
   const fetchMoreMovies = async () => {
     if (!loading) {
-        setLoading(true);
-        const nextPage = page + 1;
-        const data = await fetchUpcomingMovies(nextPage);
-        dispatch(setMovies([...movies, ...data]));
-        setPage(nextPage);
-        setLoading(false);
-      }
+      setLoading(true);
+      const nextPage = page + 1;
+      const data = await fetchUpcomingMovies(nextPage);
+      dispatch(setMovies([...movies, ...data]));
+      //   dispatch(setMovies(movies.concat(data)));
+      setPage(nextPage);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
+    let dataAppend = [];
     if (!searchResults.length) {
+      dispatch(setMovies([]));
       fetchUpcomingMovies(1).then((data) => dispatch(setMovies(data)));
+      //   fetchUpcomingMovies(1).then((data) => {
+      //     dataAppend = data;
+      //   });
+      //   fetchUpcomingMovies(2).then((data) => {
+      //     dataAppend = [...dataAppend, ...data];
+      //   });
+      //   fetchUpcomingMovies(3).then((data) => {
+      //     dataAppend = [...dataAppend, ...data];
+      //   });
+      //   fetchUpcomingMovies(4).then((data) => {
+      //     dataAppend = [...dataAppend, ...data];
+      //   });
+      //   fetchUpcomingMovies(5).then((data) => {
+      //     dataAppend = [...dataAppend, ...data];
+      //   });
+      //   fetchUpcomingMovies(6).then((data) => {
+      //     dataAppend = [...dataAppend, ...data];
+      //   });
+      //   fetchUpcomingMovies(7).then((data) => {
+      //     dataAppend = [...dataAppend, ...data];
+      //     dispatch(setMovies(dataAppend));
+      //   });
     }
-  }, [dispatch, searchResults]);
+  }, []);
 
   const handleScroll = () => {
     const windowHeight = window.innerHeight;
@@ -47,6 +72,13 @@ const MovieList = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [loading]);
+
+  //   const currentDate = new Date();
+
+  //   const filteredMovies = movies.filter((movie) => {
+  //     const releaseDate = new Date(movie.release_date);
+  //     return releaseDate > currentDate;
+  //   });
 
   const sortedMovies = movies.slice().sort((a, b) => {
     const releaseDateA = new Date(a.release_date);

@@ -6,6 +6,7 @@ export const fetchUpcomingMovies = async (page) => {
       `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`
     );
     const data = await response.json();
+    console.log("API upcoming data", data);
     return data.results;
   } catch (error) {
     console.error("Error fetching upcoming movies:", error);
