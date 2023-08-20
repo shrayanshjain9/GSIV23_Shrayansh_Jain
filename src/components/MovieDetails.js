@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchMovieDetails } from "../utility/api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setMovies } from "../store/reducers/moviesSlice";
+import { setSearchResults } from "../store/reducers/searchResultsSlice";
 
 const MovieDetails = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.movies);
   const { id } = useParams();
   const navigate = useNavigate();
   const [movie, setMovie] = useState(null);
@@ -14,12 +16,15 @@ const MovieDetails = () => {
     fetchMovieDetails(id).then((data) => setMovie(data));
 
     return () => {
-        dispatch(setMovies([]));
-    }
+      dispatch(setMovies([]));
+      dispatch(setSearchResults([]));
+    };
   }, [id]);
 
   const handleBack = () => {
     navigate("/");
+    // dispatch()
+    
   };
 
   if (!movie) {
@@ -60,9 +65,18 @@ const MovieDetails = () => {
             <h3 className="font-bold">{movie.title}</h3>
             <p className="ml-4">⭐{movie.vote_average}</p>
           </div>
-          <p><span className="font-semibold">Year of Release:  </span>{movie.release_date}</p>
-          <p><span className="font-semibold">Length: </span>{movie.runtime} minutes</p>
-          <p className="max-w-lg"><span className="font-semibold">Description: </span>{movie.overview}</p>
+          <p>
+            <span className="font-semibold">Year of Release: </span>
+            {movie.release_date}
+          </p>
+          <p>
+            <span className="font-semibold">Length: </span>
+            {movie.runtime} minutes
+          </p>
+          <p className="max-w-lg">
+            <span className="font-semibold">Description: </span>
+            {movie.overview}
+          </p>
         </div>
       </div>
     </>

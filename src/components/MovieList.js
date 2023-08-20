@@ -39,7 +39,7 @@ const MovieList = () => {
         dispatch(setMovies(sortedData));
       });
     }
-  }, []);
+  }, [searchResults, dispatch]);
 
   // Handle infinite scrolling
   const handleScroll = () => {
@@ -64,11 +64,11 @@ const MovieList = () => {
   }, [loading]);
 
   // Sort movies by release date
-//   const sortedMovies = movies.slice().sort((a, b) => {
-//     const releaseDateA = new Date(a.release_date);
-//     const releaseDateB = new Date(b.release_date);
-//     return releaseDateA - releaseDateB;
-//   });
+  //   const sortedMovies = movies.slice().sort((a, b) => {
+  //     const releaseDateA = new Date(a.release_date);
+  //     const releaseDateB = new Date(b.release_date);
+  //     return releaseDateA - releaseDateB;
+  //   });
 
   return (
     <>
