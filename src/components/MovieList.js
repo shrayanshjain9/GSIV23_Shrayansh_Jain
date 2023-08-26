@@ -26,6 +26,13 @@ const MovieList = () => {
     }
   };
 
+  // Fetch more search results when scrolling near the bottom
+  const fetchMoreSearchResults = () => {
+    if (!loading && searchResults.length) {
+      fetchMoreMovies();
+    }
+  };
+
   // Initial fetch of movies when the component mounts
   useEffect(() => {
     if (!searchResults.length) {
@@ -51,6 +58,7 @@ const MovieList = () => {
       if (scrollTop + windowHeight >= documentHeight - 300) {
         setScrolling(true);
         fetchMoreMovies();
+        fetchMoreSearchResults();
       }
     }
   };

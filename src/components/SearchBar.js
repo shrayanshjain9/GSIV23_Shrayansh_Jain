@@ -6,13 +6,32 @@ import { searchMovies } from "../utility/api";
 const SearchBar = () => {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
+  const [loadingResults, setLoadingResults] = useState(false);
 
-  const handleSearch = async (e) => {
-    // setSearchQuery(e.target.value);
+  // const handleSearch = async (e) => {
+  //   // setSearchQuery(e.target.value);
+  //   if (searchQuery) {
+  //     const results = await searchMovies(searchQuery, 1);
+  //     console.log("Search API calling", results);
+  //     dispatch(setSearchResults(results));
+  //   }
+  // };
+
+  const handleSearch = async () => {
     if (searchQuery) {
-      const results = await searchMovies(searchQuery, 1);
-      console.log("Search API calling", results);
+      setLoadingResults(true);
+      let results = [];
+      let nextPage = 1;
+
+      while (true) {
+        const data = await searchMovies(searchQuery, nextPage);
+        if (data.length === 0) break;
+        results = [...results, ...data];
+        nextPage++;
+      }
+
       dispatch(setSearchResults(results));
+      setLoadingResults(false);
     }
   };
 
